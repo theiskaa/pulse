@@ -176,6 +176,21 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  wear:
+    dependency: "direct main"
+    description:
+      path: "plugins/flutter_wear_plugin"
+      relative: true
+    source: path
+    version: "1.1.0"
+  wearable_rotary:
+    dependency: "direct main"
+    description:
+      name: wearable_rotary
+      sha256: "13ebd293a1ea271942e04bb3cc9c4dbec92d8491467f719ba44f11ad2c1c6525"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   web:
     dependency: transitive
     description:
@@ -186,3 +201,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.6 <4.0.0"
+  flutter: ">=3.3.0"
