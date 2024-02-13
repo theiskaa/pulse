@@ -38,6 +38,11 @@ dependencies:
   wear:
     path: ./plugins/flutter_wear_plugin/
   wearable_rotary: ^2.0.2
+  workout:
+    git:
+      url: https://github.com/Rexios80/flutter_workout.git
+      ref: master
+  flutter_bloc: ^8.1.4
 
 dev_dependencies:
   flutter_test:
