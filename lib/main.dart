@@ -1,9 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pulse/core/state/work/work_cubit.dart';
+import 'package:pulse/firebase_options.dart';
 import 'package:pulse/home.dart';
 
-void main() => runApp(const App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize firebase and firebase-sub-services.
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  return runApp(const App());
+}
 
 class App extends StatelessWidget {
   const App({super.key});

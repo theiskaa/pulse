@@ -30,6 +30,14 @@ class PulseData {
     );
   }
 
+  Map<String, dynamic> toJson() => {
+        'heart_rate': heartRate,
+        'calories': calories,
+        'steps': steps,
+        'distance': distance,
+        'speed': speed,
+      };
+
   String toDisplayText() {
     return 'Heart Rate: $heartRate | Calories: ${calories.toStringAsFixed(2)} | $steps Steps | Distance: ${distance.toStringAsFixed(2)}';
   }

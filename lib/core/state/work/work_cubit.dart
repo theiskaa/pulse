@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pulse/core/constants.dart';
+import 'package:pulse/core/models/pulse_data.dart';
+import 'package:pulse/core/services/fire.dart';
 import 'package:pulse/core/state/work/work_state.dart';
 import 'package:workout/workout.dart';
 
@@ -8,26 +10,27 @@ export 'work_state.dart';
 /// The main state manager cubit for work pulse data management.
 class WorkCubit extends Cubit<WorkCubitState> {
   final workout = Workout();
+  final fireService = FirestoreService();
 
   WorkCubit() : super(const WorkCubitState()) {
-    workout.stream.listen((event) {
+    workout.stream.listen((event) async {
       switch (event.feature) {
         case WorkoutFeature.unknown:
           return;
         case WorkoutFeature.heartRate:
-          pulseEvent(heartRate: event.value);
+          await pulseEvent(heartRate: event.value);
           break;
         case WorkoutFeature.calories:
-          pulseEvent(calories: event.value);
+          await pulseEvent(calories: event.value);
           break;
         case WorkoutFeature.steps:
-          pulseEvent(steps: event.value);
+          await pulseEvent(steps: event.value);
           break;
         case WorkoutFeature.distance:
-          pulseEvent(distance: event.value);
+          await pulseEvent(distance: event.value);
           break;
         case WorkoutFeature.speed:
-          pulseEvent(speed: event.value);
+          await pulseEvent(speed: event.value);
           break;
       }
     });
@@ -58,25 +61,27 @@ class WorkCubit extends Cubit<WorkCubitState> {
 
   /// A event handler method that will be triggered any time we got new event
   /// from body sensors of wearable device.
-  void pulseEvent({
+  Future<void> pulseEvent({
     double? heartRate,
     double? calories,
     double? steps,
     double? distance,
     double? speed,
-  }) {
-    emit(state.copyWith(
-      pulseData: state.pulseData.copyWith(
-        heartRate: heartRate,
-        calories: calories,
-        steps: steps,
-        distance: distance,
-        speed: speed,
-      ),
-    ));
+  }) async {
+    final updated = state.pulseData.copyWith(
+      heartRate: heartRate,
+      calories: calories,
+      steps: steps,
+      distance: distance,
+      speed: speed,
+    );
+
+    emit(state.copyWith(pulseData: updated));
+    await sendInformation(updated);
   }
 
-  Future<void> sendInformation() async {
-    // TODO:
+  /// A method that updates pulse data on each event.
+  Future<void> sendInformation(PulseData pulse) async {
+    await fireService.updatePulseData(pulse);
   }
 }

@@ -40,7 +40,7 @@ class Initial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const style = TextStyle(color: Colors.white, fontSize: 20);
+    const style = TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold);
     return Container(
       margin: const EdgeInsets.all(8),
       decoration: const BoxDecoration(
@@ -192,7 +192,7 @@ class Progress extends StatelessWidget {
                           style: TextStyle(
                             color: Color(0xff234E70),
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 20
                           ),
                         ),
                       ),
