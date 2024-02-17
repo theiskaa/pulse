@@ -14,6 +14,7 @@ class WorkCubit extends Cubit<WorkCubitState> {
 
   WorkCubit() : super(const WorkCubitState()) {
     workout.stream.listen((event) async {
+      if (event.value <= 0) return;
       switch (event.feature) {
         case WorkoutFeature.unknown:
           return;
@@ -40,7 +41,7 @@ class WorkCubit extends Cubit<WorkCubitState> {
   Future<void> startWork() async {
     final result = await workout.start(
       enableGps: true,
-      exerciseType: ExerciseType.workout,
+      exerciseType: ExerciseType.walking,
       features: workfeatures,
     );
 
