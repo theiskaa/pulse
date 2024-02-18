@@ -14,10 +14,7 @@ dependencies:
   wear:
     path: ./plugins/flutter_wear_plugin/
   wearable_rotary: ^2.0.2
-  workout:
-    git:
-      url: https://github.com/Rexios80/flutter_workout.git
-      ref: master
+  pulse_kit: ^0.1.0
   flutter_bloc: ^8.1.4
   flutter_circular_text: 0.3.1
   firebase_core: ^2.25.4
@@ -27,7 +24,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.png"
+  min_sdk_android: 30

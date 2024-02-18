@@ -1,9 +1,9 @@
-import 'package:workout/workout.dart';
+import 'package:pulse_kit/pulse_kit.dart';
 
 const workfeatures = [
-  WorkoutFeature.heartRate,
-  WorkoutFeature.calories,
-  WorkoutFeature.steps,
-  WorkoutFeature.distance,
-  WorkoutFeature.speed,
+  PulseWorkoutType.heartRate,
+  PulseWorkoutType.calories,
+  PulseWorkoutType.steps,
+  PulseWorkoutType.distance,
+  PulseWorkoutType.speed,
 ];
