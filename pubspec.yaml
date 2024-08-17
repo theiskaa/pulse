@@ -11,8 +11,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  wear:
-    path: ./plugins/flutter_wear_plugin/
   wearable_rotary: ^2.0.2
   pulse_kit: ^0.1.0
   flutter_bloc: ^8.1.4
